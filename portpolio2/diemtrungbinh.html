@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm trung bình</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .form {
+            width: 500px;
+            margin: auto;
+        }
+
+        .form .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form #dhk1 {
+            width: 300px;
+            padding: 10px 10px;
+            border-radius: 8px;
+        }
+
+        .form #dhk2 {
+            width: 300px;
+            padding: 10px 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .form #xl {
+            width: 300px;
+            padding: 10px 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+            margin-left: 55px;
+        }
+
+        .form #td {
+            width: 300px;
+            padding: 10px 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+            margin-left: 55px;
+        }
+
+        .form #dhk1:hover {
+            border: 2px solid blue;
+        }
+
+        .form #dhk2:hover {
+            border: 2px solid blue;
+        }
+
+        .form .btn {
+            text-align: center;
+        }
+
+        .form #btn {
+            width: 300px;
+            padding: 10px 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border: none;
+        }
+
+        .form #btn:hover {
+            background-color: #c0392b;
+            color: black;
+        }
+
+        .header h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ccc;
+        }
+    </style>
+    <div class="form">
+        <div class="header">
+            <h1>KẾT QUẢ HỌC TẬP</h1>
+        </div>
+        <form action="" onsubmit="return false">
+            <div class="hk1">
+                <label for="dhk1">Nhập điểm trung bình HK1</label>
+                <input type="text" name="dhk" id="dhk1" placeholder="Nhập điểm học kì I">
+            </div>
+            <div class="hk2">
+                <label for="dhk2">Nhập điểm trung bình HK2</label>
+                <input type="text" name="dhk" id="dhk2" placeholder="Nhập điểm học kì II">
+            </div>
+            <div class="sum">
+                <label for="">Tổng điểm cả năm</label>
+                <input type="text" name="" id="td" readonly>
+            </div>
+            <div id="xep-loai">
+                <label for="">Xếp loại cuối năm</label>
+                <input type="text" name="" id="xl" readonly>
+            </div>
+            <div class="btn">
+                <input type="submit" value="XEM KẾT QUẢ" id="btn">
+            </div>
+        </form>
+
+    </div>
+    <script>
+        document.getElementById("btn").onclick = () => {
+            let xep_loai = '';
+            // Nhập điểm trung bình HKI
+            let hk1 = document.getElementById("dhk1");
+            console.dir(hk1);
+            // Nhập điểm trung bình HKII 
+            let hk2 = document.getElementById("dhk2");
+            // Tính điểm trung bình cả năm
+            let tong_diem = (Number(hk1.value * 2) + Number(hk2.value))/3;
+            if(tong_diem >= 8){
+                xep_loai = "Giỏi";
+            }else if(tong_diem < 8 && tong_diem >=7){
+                xep_loai = "Khá";
+            }else if(tong_diem < 7 && tong_diem >= 5){
+                xep_loai = "Trung bình";
+            }else if(tong_diem < 5){
+                xep_loai = "Yếu";
+            }
+            document.getElementById("xl").value = xep_loai;
+            document.getElementById("td").value = tong_diem;
+        }
+    </script>
+</body>
+
+</html>

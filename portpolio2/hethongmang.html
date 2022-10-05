@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/network.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="content-network">
+            <h2 class="head-network">
+                Căn bản về hệ thống mạng dây
+            </h2>
+            <h4 class="head-content-network">
+                Cách phân biệt các loại dây cáp, kiến thức về thiết bị mạng...
+            </h4>
+            <p class="content-body-network">
+            Trước tiên cần cáo lỗi với bạn đọc vì trong phần giải thích về NAT của bài viết trước, chỉ vì người viết
+            ngại gõ lại chuỗi địa chỉ 117.x.y.z:5000 mà đã nảy sinh lỗi gây khó hiểu cho nhiều người. Hiện chúng tôi đã
+            tiến hành sửa lỗi, nếu những bạn đọc nào còn băn khoăn về cơ chế hoạt động của NAT thì nên xem lại bài viết
+            trước một lần nữa, đối chiếu với hình ảnh minh họa để nắm bắt rõ được vấn đề trước khi chúng ta đi tiếp. <br>
+
+            Cũng cần lưu ý rằng, trong khuôn khổ loạt bài lần này, chúng ta sẽ chỉ điểm lại những khái niệm căn bản
+            nhất, thiết yếu nhất phục vụ việc sử dụng các thiết bị home networking. <br> Các chi tiết kĩ thuật thực sự cụ thể
+            hoặc những khái niệm vốn chủ yếu chỉ để phục vụ nhu cầu quản lý của cỡ doanh nghiệp, nhà mạng trở lên như cơ
+            chế hoạt động của các giao thức, cấu trúc địa chỉ (subnet, netmask), PAT, các giao thức như TCP/UDP,
+            VLAN..v.v.. chúng ta sẽ để dành cho một chủ đề khác, một loạt bài khác. <br>
+
+            Hiện nay hệ thống mạng có dây vẫn là xương sống của thế giới Internet. Một tay tỉ phú có thể chơi trội sắm
+            hàng trăm router wifi đắt tiền để phủ sóng toàn bộ khuôn viên biệt thự rộng vài hecta của mình, hay một số
+            thành phố tiên tiến có thể tiến hành phủ sóng wifi trên toàn bộ khu nội thành, nhưng cuối cùng thì để kết
+            nối với thế giới, trong đó vẫn phải có một số thiết bị kết nối với dây dẫn của nhà cung cấp mạng (ISP), công
+            nghệ của chúng ta chưa đạt đến ngưỡng có thể tạo ra hệ thống mạng không dây toàn cầu. <br> Vì vậy cho dù bạn có
+            thiết kế mạng gia đình để tất cả các thiết bị đều sử dụng tín hiệu không dây, các kiến thức về mạng có dây
+            vẫn rất cần thiết. Hơn nữa, nhiều thành phần trong hệ thống mạng có dây chúng ta sắp tìm hiểu lần này, tuy
+            có thể khó hiểu hơn các kiến thức về địa chỉ mạng lúc trước đôi chút nhưng đều là những điểm thiết yếu cần
+            biết nếu bạn muốn cải thiện chất lượng kết nối, sửa lỗi hay phát hiện nguy hiểm.
+            <img class="img-network1" src="./images/LAN-SMB-HA1-PHY.jpg" alt="" srcset="" width="800" height="600">
+            <h4 class="head-content-network">
+                Dây dẫn
+            </h4>
+            Hệ thống dây dẫn ISP dùng để truyền tải tín hiệu đến cửa nhà bạn có thể không cố định, tùy theo loại thuê
+            bao mạng của bạn họ sẽ cấp cho các loại dây khác nhau. Với trường hợp các mạng thuộc nhóm DSL (phổ biến nhất
+            là ADSL & SDSL) thì là dây điện thoại, dùng qua đường truyền hình cáp thì phần lớn sẽ là cáp đồng trục, còn
+            mạng cáp quang dĩ nhiên là dùng cáp quang. Nói chung, khi đăng ký dịch vụ mạng thành công, việc bảo quản và
+            đi dây cho các đường cáp này là trách nhiệm của ISP. Bạn chỉ cần biết được chủng loại để tìm mua thiết bị
+            chuyển đổi tín hiệu thích hợp (trường hợp không thích dùng thiết bị chuyển đổi do ISP cung cấp) và để nhỡ
+            một ngày đẹp trời mạng đứt còn biết đường chạy ra cửa kiểm tra đúng đường dây nhà mình, kẻo nhà dùng
+            Internet truyền hình cáp mà nhìn thấy dây điện thoại đứt lại gọi điện lên tổng đài phàn nàn.
+
+            Trong phạm vi gia đình nói riêng và mạng LAN cỡ nhỏ nói chung, phổ biến nhất hiện nay vẫn là các loại cáp
+            xoắn Ethernet (Twisted Pair Cable). Thực chất thì không phân biệt được các loại này cũng…chẳng sao, nhưng
+            nếu bạn thực sự muốn làm công việc quản lí mạng trong nhà, tối ưu chất lượng, tốc độ kết nối thì cũng nên bỏ
+            một chút công sức tìm hiểu.
+
+            Đầu tiên cần phân biệt đầu kết nối RJ145 của cáp xoắn Ethernet và đầu RJ11 của đường dây điện thoại thường
+            được dùng để cắm vào cổng DSL trên modem. RJ11 nhỏ hơn và ít dây hơn.
+            </p>
+            <img class="img-network1" src="./images/cac-kieu-topology-cua-mang-lan-2.png" alt="" srcset="">
+        </div>
+    </div>
+    <div class="footer">
+        <p class="footer-slogan">
+            Code bởi KhoaTruong Coder <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="15"
+                height="15">
+                <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path
+                    d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208S370.7 464 256 464zM255.1 176C255.1 176 255.1 176 255.1 176c21.06 0 40.92 8.312 55.83 23.38c9.375 9.344 24.53 9.5 33.97 .1562c9.406-9.344 9.469-24.53 .1562-33.97c-24-24.22-55.95-37.56-89.95-37.56c0 0 .0313 0 0 0c-33.97 0-65.95 13.34-89.95 37.56c-49.44 49.88-49.44 131 0 180.9c24 24.22 55.98 37.56 89.95 37.56c.0313 0 0 0 0 0c34 0 65.95-13.34 89.95-37.56c9.312-9.438 9.25-24.62-.1562-33.97c-9.438-9.312-24.59-9.219-33.97 .1562c-14.91 15.06-34.77 23.38-55.83 23.38c0 0 .0313 0 0 0c-21.09 0-40.95-8.312-55.89-23.38c-30.94-31.22-30.94-82.03 0-113.3C214.2 184.3 234 176 255.1 176z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="15" height="15">
+                <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path
+                    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" />
+            </svg>
+        </p>
+    </div>
+</body>
+
+</html>
